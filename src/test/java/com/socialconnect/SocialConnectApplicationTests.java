@@ -1,13 +1,14 @@
-package com.socialhub;
+package com.socialconnect;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SocialhubApplicationTests {
+class SocialConnectApplicationTests {
 
 	@Test
 	void contextLoads() {
 	}
 
 }
+
