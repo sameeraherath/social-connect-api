@@ -26,6 +26,7 @@ public class PostService {
     private final UserRepository userRepository;
     private final LikeRepository likeRepository;
     private final UserService userService;
+    private final FollowService followService;
 
     @Transactional
     public PostResponse createPost(String username, CreatePostRequest request) {
@@ -89,7 +90,12 @@ public class PostService {
     @Transactional(readOnly = true)
     public List<PostResponse> getFeed(String username) {
         User currentUser = userService.getEntityByUsername(username);
-        List<User> followedUsers = List.of(currentUser); // Include current user's posts
+        UserListResponse followingResponse = followService.getFollowing(currentUser.getId());
+        List<User> followedUsers = followingResponse.getUsers().stream()
+                .map(userResponse -> userRepository.findById(userResponse.getId())
+                        .orElseThrow(() -> new ResourceNotFoundException("User not found")))
+                .collect(Collectors.toList());
+        followedUsers.add(currentUser); // Include current user's posts
         List<Post> posts = postRepository.findFeedPosts(followedUsers);
         return posts.stream()
                 .map(post -> mapToResponse(post, currentUser))
