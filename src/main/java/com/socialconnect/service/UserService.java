@@ -5,7 +5,6 @@ import com.socialconnect.dto.request.UpdateProfileRequest;
 import com.socialconnect.dto.response.UserResponse;
 import com.socialconnect.entity.User;
 import com.socialconnect.exception.ResourceNotFoundException;
-import com.socialconnect.exception.UnauthorizedException;
 import com.socialconnect.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;

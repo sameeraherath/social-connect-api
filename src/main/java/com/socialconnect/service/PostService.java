@@ -3,6 +3,7 @@ package com.socialconnect.service;
 import com.socialconnect.dto.request.CreatePostRequest;
 import com.socialconnect.dto.request.UpdatePostRequest;
 import com.socialconnect.dto.response.PostResponse;
+import com.socialconnect.dto.response.UserListResponse;
 import com.socialconnect.dto.response.UserResponse;
 import com.socialconnect.entity.Post;
 import com.socialconnect.entity.User;
